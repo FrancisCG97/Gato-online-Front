@@ -1,0 +1,15 @@
+<app-detalle-partida />
+<app-tablero />
+@if(salasService.estado() === "ESPERANDO_COMPAÑERO") {
+<h2 @fadeInOut> Esperando compañero </h2>
+}
+
+@if(salasService.estado() === "VICTORIA_P1" ||
+salasService.estado() === "VICTORIA_P2" || 
+salasService.estado() === "EMPATE" ||
+salasService.estado() === "VICTORIA_FINAL_P1" ||
+salasService.estado() === "VICTORIA_FINAL_P2" ) {
+
+<button (click)="nuevaRonda()" > Próxima ronda </button>
+
+}
