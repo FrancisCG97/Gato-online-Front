@@ -15,6 +15,7 @@ $padding-consola: 10px;
   background-color: colores.$background;
   border-radius: $border-radius-base;
   outline: 20px solid colores.$primary;
+  position: relative;
 }
 
 p {

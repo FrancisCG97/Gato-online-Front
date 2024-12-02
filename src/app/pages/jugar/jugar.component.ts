@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, computed, effect, inject, input, OnInit, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ServerService } from '../../services/server.service';
 import { CrearSalaArgs } from '../../interfaces/crearSala';
@@ -7,47 +7,33 @@ import { TableroComponent } from '../../components/tablero/tablero.component';
 import { DetallePartidaComponent } from '../../components/detalle-partida/detalle-partida.component';
 import { SalaService } from '../../services/sala.service';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { ModalFullscreenComponent } from "../../components/modal-fullscreen/modal-fullscreen.component";
+import { EstadoJuego } from '../../interfaces/sala';
 
 @Component({
   selector: 'app-jugar',
   standalone: true,
-  imports: [RouterModule, TableroComponent, DetallePartidaComponent],
+  imports: [RouterModule, TableroComponent, DetallePartidaComponent, ModalFullscreenComponent],
   templateUrl: './jugar.component.html',
   styleUrl: './jugar.component.scss',
-  animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-        }),
-        animate(
-          '2s ease-in',
-          style({
-            opacity: 1,
-          })
-        ),
-      ]),
-      transition(':leave', [
-        style({
-          opacity: 1,
-        }),
-        animate(
-          '2s ease-out',
-          style({
-            opacity: 0,
-          })
-        ),
-      ]),
-    ]),
-  ],
 })
 export class JugarComponent implements OnInit {
   serverService = inject(ServerService);
   usuarioService = inject(UsuarioService);
   salasService = inject(SalaService);
-
   esPrivada = input();
   id = input<string>();
+  estadosConModal: EstadoJuego[] = ["ABANDONADO", "EMPATE", "ESPERANDO_COMPAÑERO", "VICTORIA_FINAL_P1", "VICTORIA_FINAL_P2", "VICTORIA_P1", "VICTORIA_P2"];
+  mostrarModal = computed(() => this.estadosConModal.includes(this.salasService.estado()));
+  estadoAnterior = signal<EstadoJuego>("ESPERANDO_COMPAÑERO");
+  cambiarEstadoAnterior = effect(() => {
+    if(this.salasService.estado()) {
+      setTimeout(() => this.estadoAnterior.set(this.salasService.estado()), 1000),
+      {allosSignalWrites: true}
+    }
+    });
+    linkCopiado = signal<boolean>(false);
+  
 
   ngOnInit(): void {
     if (!this.esPrivada() && !this.id()) {
@@ -63,4 +49,11 @@ export class JugarComponent implements OnInit {
   nuevaRonda() {
     this.salasService.nuevaRonda();
   }
+
+  copiarLink() {
+    navigator.clipboard.writeText("localhost:4200/jugar/" + this.salasService.id());
+    this.linkCopiado.set(true);
+    setTimeout(() => this.linkCopiado.set(false), 2000);
+  }
+
 }
