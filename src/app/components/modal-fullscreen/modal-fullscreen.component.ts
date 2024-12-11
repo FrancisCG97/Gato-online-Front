@@ -1,4 +1,11 @@
-import { trigger, transition, style, animate, animateChild, query } from '@angular/animations';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  animateChild,
+  query,
+} from '@angular/animations';
 import { Component, input } from '@angular/core';
 
 @Component({
@@ -9,29 +16,28 @@ import { Component, input } from '@angular/core';
   styleUrl: './modal-fullscreen.component.scss',
   animations: [
     trigger('animateChildren', [
-      transition('* => void', [
-        query('@*', [animateChild()])])
+      transition('* => void', [query('@*', [animateChild()])]),
     ]),
     trigger('fadeInOut', [
       transition(':enter', [
         style({
-          opacity: 0
+          opacity: 0,
         }),
         animate(
           '0.5s ease-in-out',
           style({
-            opacity: 1
+            opacity: 1,
           })
         ),
       ]),
       transition(':leave', [
         style({
-          opacity: 1
+          opacity: 1,
         }),
         animate(
           '2s ease-out',
           style({
-            opacity: 0
+            opacity: 0,
           })
         ),
       ]),
@@ -39,23 +45,23 @@ import { Component, input } from '@angular/core';
     trigger('inOutAnimation', [
       transition(':enter', [
         style({
-          translate: "400px"
+          translate: '400px',
         }),
         animate(
           '0.5s ease-in-out',
           style({
-            translate: 0
+            translate: 0,
           })
         ),
       ]),
       transition(':leave', [
         style({
-          translate: 0
+          translate: 0,
         }),
         animate(
           '2s ease-out',
           style({
-            translate: "-400px"
+            translate: '-400px',
           })
         ),
       ]),
@@ -63,23 +69,47 @@ import { Component, input } from '@angular/core';
     trigger('inOutAnimation2', [
       transition(':enter', [
         style({
-          translate: "400px"
+          translate: '400px',
         }),
         animate(
           '0.5s 0.2s ease-in-out',
           style({
-            translate: 0
+            translate: 0,
           })
         ),
       ]),
       transition(':leave', [
         style({
-          translate: 0
+          translate: 0,
         }),
         animate(
           '0.5s 0.2s ease-out',
           style({
-            translate: "-400px"
+            translate: '-400px',
+          })
+        ),
+      ]),
+    ]),
+    trigger('inOutAnimation3', [
+      transition(':enter', [
+        style({
+          translate: '400px',
+        }),
+        animate(
+          '0.5s 0.2s ease-in-out',
+          style({
+            translate: 0,
+          })
+        ),
+      ]),
+      transition(':leave', [
+        style({
+          translate: 0,
+        }),
+        animate(
+          '0.5s 0.2s ease-out',
+          style({
+            translate: '-400px',
           })
         ),
       ]),
@@ -87,8 +117,5 @@ import { Component, input } from '@angular/core';
   ],
 })
 export class ModalFullscreenComponent {
-
   mostrar = input.required<boolean>();
-
 }
-

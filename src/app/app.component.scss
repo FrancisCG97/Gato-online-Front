@@ -25,7 +25,7 @@ p {
   font-weight: bold;
 }
 
-@media(width <= 600px) {
+@media (width <= 600px) {
   body {
     margin: 0;
   }
@@ -35,7 +35,7 @@ p {
   }
 }
 
-@media(height <= 800px) {
+@media (height <= 800px) {
   body {
     margin: 0;
   }
@@ -51,7 +51,9 @@ p {
   }
 
   #pantalla {
-    height: 85svh;
+    height: calc(
+      100svh - ($padding-consola * 2) - ($border-radius-base + $padding-consola) *
+        2
+    );
   }
-
 }

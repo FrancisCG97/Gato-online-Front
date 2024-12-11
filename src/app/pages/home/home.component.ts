@@ -18,7 +18,6 @@ export class HomeComponent {
   // Pregunta al servidor si hay una sala publica disponible
   buscarSalaPublica() {
     this.serverService.server.emitWithAck('encontrarSala').then((res) => {
-      console.log(res);
       if (res === null) return this.router.navigate(['/jugar']);
       return this.router.navigate(['/jugar', res]);
     });
