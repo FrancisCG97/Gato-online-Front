@@ -1,4 +1,5 @@
-<form (ngSubmit)="cambiarNombreYvolver(nombre.value)" #form="ngForm">
+<section class="flex-column">
+<form (ngSubmit)="cambiarNombreYvolver(nombre.value)" #form="ngForm" class="flex-column">
   <label for="nombre"> ESCRIBE TU NOMBRE </label>
   <input
     type="text"
@@ -8,7 +9,7 @@
     required
     maxlength="20"
   />
-  <button [disabled]="form.invalid">Cambiar nombre</button>
+  <button class="boton" [disabled]="form.invalid">Cambiar nombre</button>
+<a class="boton" [routerLink]="['/']"> Volver </a>
 </form>
-
-<a [routerLink]="['/']"> Volver </a>
+</section>

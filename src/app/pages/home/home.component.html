@@ -1,5 +1,11 @@
-<p>{{ usuarioService.nombre() }}</p>
+<section class="flex-column">
+    <h1 class="borde-animado"> JUEGO GATO <span> ONLINE </span></h1>
 
-<button (click)="buscarSalaPublica()">Jugar online</button>
-<a [routerLink]="['/jugar-privada']"> Crear sala privada </a>
-<a [routerLink]="['/cambiar-nombre']"> Cambiar nombre</a>
+<p>¡Hola <span>{{ usuarioService.nombre() }}</span>!</p>
+
+<div class="flex-column">
+<button class="boton" (click)="buscarSalaPublica()">Jugar online</button>
+<a class="boton" [routerLink]="['/jugar-privada']"> Crear sala privada </a>
+<a class="boton" [routerLink]="['/cambiar-nombre']"> Cambiar nombre</a>
+</div>
+</section>

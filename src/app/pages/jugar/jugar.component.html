@@ -1,41 +1,55 @@
+<div id="container">
 <app-detalle-partida />
 <app-tablero />
+</div>
+
 <app-modal-fullscreen [mostrar]="this.mostrarModal()">
-  @switch (estadoAnterior()) { @case ("ESPERANDO_COMPAÑERO") {
+
+  @switch (estadoAnterior()) { 
+    @case ("ESPERANDO_COMPAÑERO") {
     <img secundario src="img/3-dots-scale-middle.svg">
-  } @case ("VICTORIA_P1") {
+  } 
+  @case ("VICTORIA_P1") {
   <h2 primario>Ganó {{ salasService.jugador1().nombre }}</h2>
-  } @case ("VICTORIA_P2") {
+  } 
+  @case ("VICTORIA_P2") {
   <h2 primario>Ganó {{ salasService.jugador2().nombre }}</h2>
-  } @case ("VICTORIA_FINAL_P1") {
+  } 
+  @case ("VICTORIA_FINAL_P1") {
   <h2 primario>Ganó {{ salasService.jugador1().nombre }} todas las rondas</h2>
-  } @case ("VICTORIA_FINAL_P2") {
+  } 
+  @case ("VICTORIA_FINAL_P2") {
   <h2 primario>Ganó {{ salasService.jugador2().nombre }} todas las rondas</h2>
-  } } @switch (estadoAnterior()) { @case ("VICTORIA_P1") {
-  <button secundario (click)="nuevaRonda()">Próxima ronda</button>
-  } @case ("VICTORIA_P2") {
-  <button secundario (click)="nuevaRonda()">Próxima ronda</button>
-  } @case ("VICTORIA_FINAL_P1") {
-  <button secundario (click)="nuevaRonda()">Nueva partida</button>
-  } @case ("VICTORIA_FINAL_P2") {
-  <button secundario (click)="nuevaRonda()">Nueva partida</button>
-  } } @if(!salasService.publica() && this.estadoAnterior() === "ESPERANDO_COMPAÑERO" ) {
-  <div pie>
-  <p>Copia el link para invitar a jugar a un amigo</p>
-  <button id="boton-copiar">
-  <img (click)="copiarLink()" src="img/copy.svg" />
-</button>
-  @if(linkCopiado()) {
-  <span>✓</span>
-  }
+  } 
+} 
+
+@switch (estadoAnterior()) { @case ("VICTORIA_P1") {
+  <button class="boton" secundario (click)="nuevaRonda()">Próxima ronda</button>
+  } 
+  @case ("VICTORIA_P2") {
+  <button class="boton" secundario (click)="nuevaRonda()">Próxima ronda</button>
+  } 
+  @case ("VICTORIA_FINAL_P1") {
+  <button class="boton" secundario (click)="nuevaRonda()">Nueva partida</button>
+  } 
+  @case ("VICTORIA_FINAL_P2") {
+  <button class="boton" secundario (click)="nuevaRonda()">Nueva partida</button>
+  } 
+} 
+
+@if(!salasService.publica() && this.estadoAnterior() === "ESPERANDO_COMPAÑERO" ) {
+  <div pie id="pie">
+  <p>Copia el link para invitar a jugar a un amigo
+    <button id="boton-copiar">
+      <img (click)="copiarLink()" src="img/copy.svg" />
+      @if(linkCopiado()) {
+        <span>✓</span>
+        }
+    </button>
+  </p>
+
 </div>
  }
+
 </app-modal-fullscreen>
 
-@if( salasService.estado() === "VICTORIA_P1" || salasService.estado() ===
-"VICTORIA_P2" || salasService.estado() === "EMPATE" || salasService.estado() ===
-"VICTORIA_FINAL_P1" || salasService.estado() === "VICTORIA_FINAL_P2" ) {
-
-<button (click)="nuevaRonda()">Próxima ronda</button>
-
-}

@@ -1,13 +1,23 @@
-<p>Jugador 1: {{salaService.jugador1().nombre}}</p>
+<section class="flex-apart">
+  <div class="jugador-container">
+    <span class="corazon-container"> @for (vida of vidasJ1(); track $index) {❤️} </span>
+    <span class="simbolo-jugador" [ngClass]="{activo: salaService.estado() === 'TURNO_P1'}"> X </span>
+    <p>{{ salaService.jugador1().nombre }}</p>
+  </div>
+  <div jugador-container>
+    <span class="simbolo-jugador" [ngClass]="{activo: salaService.estado() === 'TURNO_P2'}"> O </span>
+    @if (!salaService.jugador2().nombre) {
+      <span class="corazon-container">
+        ❤️❤️❤️
+      </span> 
+    } 
+    @else {
+    <span class="corazon-container"> @for (vida of vidasJ2(); track $index) {❤️} </span>
+    }
+    <p>{{ salaService.jugador2().nombre || "..." }}</p>
+  </div>
+</section>
 
-@for (vida of vidasJ1(); track $index) {
-    ❤️
+@if(salaService.estado() === 'TURNO_P1' || salaService.estado() === 'TURNO_P2') {
+    <p class="turno">Turno de {{salaService.estado() === 'TURNO_P1' ? salaService.jugador1().nombre : salaService.jugador2().nombre}}</p>
 }
-
-<p>Jugador 2: {{salaService.jugador2().nombre}}</p>
-
-@for (vida of vidasJ2(); track $index) {
-    ❤️
-}
-
-<p>Estado Juego: {{salaService.estado()}}</p>

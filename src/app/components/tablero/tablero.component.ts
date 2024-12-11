@@ -1,11 +1,12 @@
 import { Component, computed, inject } from '@angular/core';
 import { SalaService } from '../../services/sala.service';
-import { POSICION_TABLERO } from '../../interfaces/sala';
+import { NUMERO_JUGADOR, POSICION_TABLERO } from '../../interfaces/sala';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tablero',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './tablero.component.html',
   styleUrl: './tablero.component.scss'
 })
@@ -19,4 +20,11 @@ export class TableroComponent {
   jugar(posicion: POSICION_TABLERO) {
     this.salaService.jugar(posicion);    
   }
+
+  getMarca(jugador: "" | NUMERO_JUGADOR) {
+    if(!jugador) return "";
+    if(jugador === 1) return "X";
+    return "O";
+  }
+
 }

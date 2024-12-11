@@ -1,5 +1,29 @@
 #boton-copiar {
-    width: 20px;
+    width: 20%;
     padding: 0%;
-    aspect-ratio: 1;
+    aspect-ratio: 0;
+}
+
+#container {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+app-tablero {
+    margin: auto 0;
+}
+
+#pie {
+    p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    button {
+        width: 1rem;
+        border: unset;
+        background-color: unset;
+        cursor: pointer;
+    }
 }

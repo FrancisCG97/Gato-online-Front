@@ -1,0 +1,41 @@
+@use "../../../../public/colores.scss";
+
+section {
+    width: 100%;
+    margin: auto;
+}
+
+p {
+    margin: 0;
+}
+
+.jugador-container {
+    &:nth-child(1) {
+        text-align: start;
+    }
+    &:nth-child(2) {
+        text-align: end;
+    }
+}
+
+.corazon-container {
+    border-bottom: 2px solid red;
+    font-size: 1.5rem;
+}
+
+.simbolo-jugador {
+    margin: 0 5px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    &.activo {
+        background-color: colores.$accent-1;
+        border-radius: 50%;
+    }
+}
+
+.turno {
+    font-size: larger;
+    text-align: center;
+}
