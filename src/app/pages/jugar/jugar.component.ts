@@ -37,7 +37,7 @@ export class JugarComponent implements OnInit {
   usuarioService = inject(UsuarioService);
   salasService = inject(SalaService);
   location = inject(Location);
-  esPrivada = input();
+  esPrivada = input<boolean>();
   id = input<string>();
   estadosConModal: EstadoJuego[] = [
     'ABANDONADO',
