@@ -30,7 +30,8 @@
   <button class="boton" secundario (click)="nuevaRonda()">Nueva partida</button>
   } @case ("ABANDONADO") {
   <a [routerLink]="['/']" class="boton" secundario>Volver al inicio</a>
-  } } @if(!salasService.publica() && this.estadoAnterior() ===
+  } } 
+  <!-- @if(!salasService.publica() && this.estadoAnterior() ===
   "ESPERANDO_COMPAÑERO" ) {
   <div pie id="pie">
     <p>
@@ -43,5 +44,5 @@
       </button>
     </p>
   </div>
-  }
+  } -->
 </app-modal-fullscreen>

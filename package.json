@@ -1,6 +1,6 @@
 {
   "name": "gato-en-vivo",
-  "version": "1.4",
+  "version": "1.5",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

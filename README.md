@@ -1,27 +1,24 @@
-# GatoEnVivo
+# Gato online
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+## ¿Qué es Gato online?
 
-## Development server
+Gato online es una aplicación web en la cual puedes jugar gato (o tres en raya) de forma online junto a alguno de tus amigos.
+¡No pierdas la oportunidad de pasar un buen rato!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## [¡Visita Gato online!](https://gato-en-vivo.netlify.app)
 
-## Code scaffolding
+## Vistas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Esta aplicación puede jugarse tanto en pantallas desktop como en tablet o móviles, ya que es totalmente responsiva, sin embargo, para una mejor experiencia, se recomienda jugarlo en tu teléfono celular.
 
-## Build
+## Configuración de la aplicación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Gato online está desarrollado en el Frontend con TypeScript, Angular y SASS (SCSS), y en el Backend con TypeScript y NodeJs.
 
-## Running unit tests
+El Frontend está desplegado en Netlify y el Backend está desplegado en Render.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Desarrolladora
 
-## Running end-to-end tests
+Por último, te invito a ver mi perfil de GitHub, donde puedes encontrar repositorios de diversos proyectos que he desarrollado (¡y los que se vienen más adelante, por supuesto!)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[Francis Carrasco ✨](https://github.com/FrancisCG97)
