@@ -5,12 +5,13 @@ import { CrearSalaArgs } from '../interfaces/crearSala';
 import { UnirseASalaArgs } from '../interfaces/unirseASala';
 import { Subject } from 'rxjs';
 import { SalaBackend } from '../interfaces/sala';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ServerService {
-  server = io('localhost:3000', { autoConnect: false });
+  server = io(environment.SERVER_URL, { autoConnect: false });
   usuarioService = inject(UsuarioService);
 
   actualizacionDeSala$ = new Subject<SalaBackend>();
