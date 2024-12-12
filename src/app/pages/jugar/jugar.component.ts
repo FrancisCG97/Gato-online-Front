@@ -78,11 +78,9 @@ export class JugarComponent implements OnInit {
     this.salasService.nuevaRonda();
   }
 
-  copiarLink() {
-    navigator.clipboard.writeText(
-      environment.CLIENT_URL + '/jugar/' + this.salasService.id()
-    );
+  copiarLink(){
+    navigator.clipboard.writeText(environment.CLIENT_URL+"/jugar/"+this.salasService.id());
     this.linkCopiado.set(true);
-    setTimeout(() => this.linkCopiado.set(false), 2000);
+    setTimeout(()=> this.linkCopiado.set(false),2000);
   }
 }

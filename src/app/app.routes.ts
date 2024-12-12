@@ -16,17 +16,17 @@ export const routes: Routes = [
     canActivate: [necesitaNombreGuard],
   },
   {
+    path: 'jugar/:id',
+    component: JugarComponent,
+    canActivate: [necesitaNombreGuard],
+  },
+  {
     path: 'jugar-privada',
     component: JugarComponent,
     canActivate: [necesitaNombreGuard],
     data: {
       esPrivada: true,
     },
-  },
-  {
-    path: 'jugar/:id',
-    component: JugarComponent,
-    canActivate: [necesitaNombreGuard],
   },
   {
     path: 'cambiar-nombre',

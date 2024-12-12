@@ -60,11 +60,11 @@ export class SalaService {
     const args: CrearSalaArgs = {
       publica: !esPrivada,
       nombreJugador: this.usuarioService.nombre(),
-    };
+    }
     this.serverService.server.emitWithAck('crearSala', args).then((res) => {
       this.desestructurarSala(res.sala);
       this.numeroDeJugador.set(1);
-    });
+    })
   }
 
   // Une al cliente a una sala de juegos
@@ -72,11 +72,11 @@ export class SalaService {
     const args: UnirseASalaArgs = {
       id,
       nombreJugador: this.usuarioService.nombre(),
-    };
+    }
     this.serverService.server.emitWithAck('unirseASala', args).then((res) => {
       this.desestructurarSala(res.sala);
       this.numeroDeJugador.set(2);
-    });
+    })
   }
 
   // Envía al servidor la petición de un jugador
