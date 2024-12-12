@@ -58,7 +58,7 @@ export class JugarComponent implements OnInit {
         () => this.estadoAnterior.set(this.salasService.estado()),
         300
       ),
-        { allosSignalWrites: true };
+        { allowSignalWrites: true };
     }
   });
   linkCopiado = signal<boolean>(false);
@@ -78,9 +78,16 @@ export class JugarComponent implements OnInit {
     this.salasService.nuevaRonda();
   }
 
-  copiarLink(){
-    navigator.clipboard.writeText(environment.CLIENT_URL+"/jugar/"+this.salasService.id());
-    this.linkCopiado.set(true);
-    setTimeout(()=> this.linkCopiado.set(false),2000);
+  copiarLink() {
+    try {
+      navigator.clipboard.writeText(
+        `${environment.CLIENT_URL}/jugar/${this.salasService.id()}`
+      );
+      this.linkCopiado.set(true);
+      setTimeout(() => this.linkCopiado.set(false), 2000);
+    } catch (error) {
+      console.error('Error copiando el enlace:', error);
+    }
   }
+  
 }
