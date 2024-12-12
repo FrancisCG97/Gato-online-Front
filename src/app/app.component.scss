@@ -11,7 +11,7 @@ $padding-consola: 10px;
 }
 
 #pantalla {
-  height: 500px;
+  max-height: 600px;
   background-color: colores.$background;
   border-radius: $border-radius-base;
   outline: 20px solid colores.$primary;

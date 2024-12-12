@@ -1,8 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { UsuarioService } from './usuario.service';
-import { CrearSalaArgs } from '../interfaces/crearSala';
-import { UnirseASalaArgs } from '../interfaces/unirseASala';
 import { Subject } from 'rxjs';
 import { SalaBackend } from '../interfaces/sala';
 import { environment } from '../../environments/environment';
