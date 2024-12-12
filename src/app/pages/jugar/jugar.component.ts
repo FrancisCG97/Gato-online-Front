@@ -37,7 +37,7 @@ export class JugarComponent implements OnInit {
   usuarioService = inject(UsuarioService);
   salasService = inject(SalaService);
   location = inject(Location);
-  esPrivada = input<boolean>();
+  esPrivada = input();
   id = input<string>();
   estadosConModal: EstadoJuego[] = [
     'ABANDONADO',
@@ -52,15 +52,12 @@ export class JugarComponent implements OnInit {
     this.estadosConModal.includes(this.salasService.estado())
   );
   estadoAnterior = signal<EstadoJuego>('ESPERANDO_COMPAÑERO');
-  cambiarEstadoAnterior = effect(() => {
-    if (this.salasService.estado()) {
-      setTimeout(
-        () => this.estadoAnterior.set(this.salasService.estado()),
-        300
-      ),
-        { allowSignalWrites: true };
-    }
-  });
+  cambiarEstadoAnterior = effect(()=> {
+    if(this.salasService.estado()){
+      setTimeout(()=>{
+        this.estadoAnterior.set(this.salasService.estado());
+      },300)}
+  },{allowSignalWrites:true});
   linkCopiado = signal<boolean>(false);
 
   ngOnInit(): void {
@@ -78,16 +75,10 @@ export class JugarComponent implements OnInit {
     this.salasService.nuevaRonda();
   }
 
-  copiarLink() {
-    try {
-      navigator.clipboard.writeText(
-        `${environment.CLIENT_URL}/jugar/${this.salasService.id()}`
-      );
-      this.linkCopiado.set(true);
-      setTimeout(() => this.linkCopiado.set(false), 2000);
-    } catch (error) {
-      console.error('Error copiando el enlace:', error);
-    }
+  copiarLink(){
+    navigator.clipboard.writeText(environment.CLIENT_URL+"/jugar/"+this.salasService.id());
+    this.linkCopiado.set(true);
+    setTimeout(()=> this.linkCopiado.set(false),2000);
   }
   
 }
