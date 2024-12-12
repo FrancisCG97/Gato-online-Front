@@ -95,7 +95,7 @@
                 "glob": "**/*",
                 "input": "public"
               },
-              "src/app/_redirects"
+              "src/_redirects"
             ],
             "styles": [
               "src/styles.scss"
