@@ -10,7 +10,9 @@
   <h2 primario>Ganó {{ salasService.jugador1().nombre }}</h2>
   } @case ("VICTORIA_P2") {
   <h2 primario>Ganó {{ salasService.jugador2().nombre }}</h2>
-  } @case ("VICTORIA_FINAL_P1") {
+  } @case ("EMPATE") {
+  <h2 primario>Empate</h2>
+  }@case ("VICTORIA_FINAL_P1") {
   <h2 primario>Ganó {{ salasService.jugador1().nombre }} todas las rondas</h2>
   } @case ("VICTORIA_FINAL_P2") {
   <h2 primario>Ganó {{ salasService.jugador2().nombre }} todas las rondas</h2>
@@ -20,7 +22,9 @@
   <button class="boton" secundario (click)="nuevaRonda()">Próxima ronda</button>
   } @case ("VICTORIA_P2") {
   <button class="boton" secundario (click)="nuevaRonda()">Próxima ronda</button>
-  } @case ("VICTORIA_FINAL_P1") {
+  } @case ("EMPATE") {
+  <button class="boton" secundario (click)="nuevaRonda()">Próxima ronda</button>
+  }@case ("VICTORIA_FINAL_P1") {
   <button class="boton" secundario (click)="nuevaRonda()">Nueva partida</button>
   } @case ("VICTORIA_FINAL_P2") {
   <button class="boton" secundario (click)="nuevaRonda()">Nueva partida</button>
